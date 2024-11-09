@@ -7,11 +7,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
 </head>
 <body>
+    <!-- Barra de navegación -->
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="{% url 'inicio' %}">
+                Biblioteca
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="{% url 'listar_libros' %}">
+                    Listar Libros
+                </a>
+                <a class="navbar-item" href="{% url 'crear_libro' %}">
+                    Crear Libro
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mensajes de éxito -->
     <section class="section">
         <div class="container">
             <h1 class="title">Lista de Libros</h1>
-            
-            <!-- Mensajes de éxito -->
             {% if messages %}
                 <div>
                     {% for message in messages %}
@@ -22,9 +40,6 @@
                 </div>
             {% endif %}
 
-            <!-- Botón para crear un nuevo libro -->
-            <a href="{% url 'crear_libro' %}" class="button is-primary">Crear Nuevo Libro</a>
-            
             <!-- Tabla para listar los libros -->
             <table class="table is-striped is-fullwidth">
                 <thead>
@@ -61,5 +76,14 @@
             </table>
         </div>
     </section>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Biblioteca</strong> - Listado de libros disponibles.
+            </p>
+        </div>
+    </footer>
 </body>
 </html>

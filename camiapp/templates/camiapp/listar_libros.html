@@ -10,22 +10,9 @@
     <section class="section">
         <div class="container">
             <h1 class="title">Lista de Libros</h1>
-            
-            <!-- Mensajes de éxito -->
-            {% if messages %}
-                <div>
-                    {% for message in messages %}
-                        <div class="notification is-primary">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
 
-            <!-- Botón para crear un nuevo libro -->
             <a href="{% url 'crear_libro' %}" class="button is-primary">Crear Nuevo Libro</a>
-            
-            <!-- Tabla para listar los libros -->
+
             <table class="table is-striped is-fullwidth">
                 <thead>
                     <tr>
@@ -46,13 +33,8 @@
                             <td>{{ libro.año_libro }}</td>
                             <td>{{ libro.categoria_libro }}</td>
                             <td>
-                                <!-- Enlace para ver los detalles de un libro -->
                                 <a href="{% url 'detalle_libro' libro.pk %}" class="button is-info is-small">Ver</a>
-                                
-                                <!-- Enlace para actualizar un libro -->
                                 <a href="{% url 'actualizar_libro' libro.pk %}" class="button is-warning is-small">Editar</a>
-                                
-                                <!-- Enlace para eliminar un libro -->
                                 <a href="{% url 'eliminar_libro' libro.pk %}" class="button is-danger is-small" onclick="return confirm('¿Estás seguro de que deseas eliminar este libro?');">Eliminar</a>
                             </td>
                         </tr>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Libro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="{% url 'inicio' %}">
+                Biblioteca
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="{% url 'listar_libros' %}">
+                    Listar Libros
+                </a>
+                <a class="navbar-item" href="{% url 'crear_libro' %}">
+                    Crear Libro
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección del formulario -->
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Crear Nuevo Libro</h1>
+            <p class="subtitle">Ingresa los detalles del libro que deseas agregar.</p>
+
+            <!-- Formulario de creación de libro -->
+            <div class="box">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <button type="submit" class="button is-primary">Guardar</button>
+                        </div>
+                        <div class="control">
+                            <a href="{% url 'listar_libros' %}" class="button is-light">Volver a la Lista</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Mensaje de éxito -->
+            {% if messages %}
+                <div>
+                    {% for message in messages %}
+                        <div class="notification is-success">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Biblioteca</strong> - Creación de libros usando Django.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
